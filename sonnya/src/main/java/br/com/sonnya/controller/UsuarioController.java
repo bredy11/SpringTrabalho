@@ -13,49 +13,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sonnya.model.Comercio;
+import br.com.sonnya.model.Usuario;
 import br.com.sonnya.service.ComercioService;
+import br.com.sonnya.service.UsuarioService;
 
 @RestController
-public class ClienteController {
+public class UsuarioController {
 
 	
 	@Autowired
-	ComercioService comercioService;
+	UsuarioService usuarioService;
 	
 	
-	@RequestMapping(method = RequestMethod.POST,value="/comercios",
+	@RequestMapping(method = RequestMethod.POST,value="/usuario",
 			produces=MediaType.APPLICATION_JSON_VALUE,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Comercio> cadastrar(@RequestBody Comercio comercio) {
+	public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) {
 		
 		
-		return new ResponseEntity<Comercio>(comercioService.alterarSerie(comercio),HttpStatus.CREATED);
+		return new ResponseEntity<Usuario>(usuarioService.alterarSerie(usuario),HttpStatus.CREATED);
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET,value="/comercios",	
+	@RequestMapping(method = RequestMethod.GET,value="/usuario",	
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Comercio>> BuscarTodos() {
+	public ResponseEntity<Collection<Usuario>> BuscarTodos() {
 		
-		Collection<Comercio> seriesColec = comercioService.buscarTodasAsSeries(); 
+		Collection<Usuario> seriesColec = usuarioService.buscarTodasAsSeries(); 
 		return new ResponseEntity<>(seriesColec,HttpStatus.OK);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT,value="/comercios",	
+	@RequestMapping(method = RequestMethod.PUT,value="/usuario",	
 			produces=MediaType.APPLICATION_JSON_VALUE,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Comercio> alterar(@RequestBody Comercio comercio) {
+	public ResponseEntity<Usuario> alterar(@RequestBody Usuario usuario) {
 	
-		Comercio comercioSalvo = comercioService.alterarSerie(comercio); 
-		return new ResponseEntity<>(comercioSalvo,HttpStatus.OK);
+		Usuario usuarioSalvo = usuarioService.alterarSerie(usuario); 
+		return new ResponseEntity<>(usuarioSalvo,HttpStatus.OK);
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.DELETE,value="/comercios/{id}",	
+	@RequestMapping(method = RequestMethod.DELETE,value="/usuario/{id}",	
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Comercio>> deletar(@PathVariable("id") String id) {
+	public ResponseEntity<Collection<Usuario>> deletar(@PathVariable("id") String id) {
 		Integer teset =Integer.valueOf(id) ;
-		Collection<Comercio> seriesColec = comercioService.delete(teset); 
+		Collection<Usuario> seriesColec = usuarioService.delete(teset); 
 		return new ResponseEntity<>(seriesColec,HttpStatus.OK);
 	}
 	

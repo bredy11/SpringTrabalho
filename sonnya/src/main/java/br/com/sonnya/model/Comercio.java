@@ -14,8 +14,8 @@ import javax.persistence.Table;
 public class Comercio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "idComercio")
+	private Integer idComercio;
 	@Column
 	private String nome;
 	@Column
@@ -30,6 +30,9 @@ public class Comercio {
 	private Date dtInscricao;
 	
 
+	
+	
+
 	public Date getDtInscricao() {
 		return dtInscricao;
 	}
@@ -38,12 +41,11 @@ public class Comercio {
 		this.dtInscricao = dtInscricao;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdComercio() {
+		return idComercio;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdComercio(Integer idComercio) {
+		this.idComercio = idComercio;
 	}
 
 	public String getNome() {

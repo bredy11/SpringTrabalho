@@ -1,5 +1,6 @@
 package br.com.sonnya.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class ComercioService {
 	public Comercio novaSerie(Comercio comercio) {
 
 		return comercioRepositorio.save(comercio);
+	}
+
+	public Collection<Comercio> delete(Integer id) {
+		comercioRepositorio.delete(id);
+		return comercioRepositorio.findAll();
 	}
 
 }
